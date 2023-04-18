@@ -1,20 +1,19 @@
-// Imports express and routes
+// packages
 const express = require('express');
-const apiRouter = require('./routes/api');
+const apiRouter =require('./routes/api');
 const htmlRouter = require('./routes/html');
 
-// port being used and adds express
-const PORT = process.env.port || 3001;
+// port
+const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Middleware to turn data into readable json
+// express middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
 app.use(express.json());
+app.use(express.static('public'));
 
-// routers for the server
+app.use('/api', apiRouter);
 app.use('/', htmlRouter);
-app.use('/api', apiRouter)
 
-// Displays that the port is being listened to
-app.listen(PORT, () => console.log(`App now listening on port http://localhost:${PORT}`));
+// listen to the server
+app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT} 🚀`));

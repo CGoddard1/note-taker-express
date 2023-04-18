@@ -1,37 +1,28 @@
-// Imports express, router, uuid, and fs
-const express = require('express');
-const router = express.Router();
+// packages
+const router = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 
-// Gets all notes that have been made
+// get route for JSON notes
 router.get('/notes', async (req, res) => {
-    const dbJson = await JSON.parse(fs.readFileSync('/db/db.json', 'utf8'));
+    const dbJson = await JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
     res.json(dbJson);
 });
 
-// Posts all note data into a new note object
+// post route for new notes
 router.post('/notes', (req, res) => {
-    const dbJson = JSON.parse(fs.readFileSync('/db/db.json', 'utf8'));
+    const dbJson = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
 
-    // New note object
+    // new note var
     const newNote = {
         id: uuidv4(),
         title: req.body.title,
         text: req.body.text
     };
 
-    // Pushes the data into the new note object and shows it to the page
     dbJson.push(newNote);
     fs.writeFileSync('db/db.json', JSON.stringify(dbJson));
-    res.json(dbJson);
+    return res.json(dbJson);
 });
 
-// router.delete('/notes/:id', (req, res) => {
-//     fs.writeFileSync(path.join(__dirname, './db/db.json'),
-//         JSON.stringify(notesArray, null, 2)
-//     );
-// })
-
-// Exports router to be used on a different page
 module.exports = router;
