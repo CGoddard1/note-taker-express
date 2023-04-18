@@ -1,20 +1,22 @@
-const router = require('express').Router();
+// Imports express, router, and path
+const express = require('express');
+const router = express.Router();
 const path = require('path');
 
-// get route homepage
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'))
-});
+// Gets the homepage and displays it
+router.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+);
 
-// get route notes page
-router.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/notes.html'))
-});
+// Gets everything and displays it
+router.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+);
 
-// get * route homepage
-router.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'))
-});
+// Gets the notes page and displays it
+router.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '../public/notes.html'))
+);
 
-// export the router 
+// Exports router to be used on a different page
 module.exports = router;
