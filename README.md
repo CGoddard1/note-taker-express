@@ -34,11 +34,8 @@ UNCC Project Design
 - Jay Cruz: Github - yarocruz
 - Kara Kystan: Github - kara-krzystan
 
-## Link to the Repo
-<a href="https://github.com/CGoddard1/note-taker-express">
+## Link to the Repo (https://github.com/CGoddard1/note-taker-express)
 
-## Image
-<img href="Screen Shot 2023-02-28 at 6.03.39 PM.png">
+## Image (Screen Shot 2023-02-28 at 6.03.39 PM.png)
 
-## Heroku deployed link
-<a href="https://ancient-spire-37904.herokuapp.com/">
+## Heroku deployed link (https://ancient-spire-37904.herokuapp.com/)
